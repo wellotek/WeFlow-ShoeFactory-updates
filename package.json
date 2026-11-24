@@ -1,0 +1,129 @@
+{
+  "name": "weflow-shoefactory",
+  "private": true,
+  "version": "1.0.0",
+  "description": "WeFlow ShoeFactory — Logiciel professionnel de gestion et fabrication de chaussures en Algérie.",
+  "license": "UNLICENSED",
+  "author": "WeFlow",
+  "main": "./out/main/index.js",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "predev": "node scripts/use-native.cjs electron",
+    "build": "electron-vite build",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "lint": "eslint .",
+    "test": "node scripts/test-runner.cjs",
+    "test:node": "node scripts/use-native.cjs node && vitest run",
+    "electron:build": "node scripts/use-native.cjs electron && npm run build && electron-builder --win --x64",
+    "verify:packaged": "node scripts/verify-packaged.cjs",
+    "release:win": "node scripts/use-native.cjs electron && npm run build && electron-builder --win --x64 --publish always"
+  },
+  "build": {
+    "appId": "com.weflow.shoefactory",
+    "productName": "WeFlow ShoeFactory",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "out/**/*",
+      "package.json"
+    ],
+    "asarUnpack": [
+      "**/node_modules/better-sqlite3/**",
+      "**/node_modules/bindings/**",
+      "**/node_modules/file-uri-to-path/**"
+    ],
+    "extraResources": [
+      {
+        "from": "resources/branding",
+        "to": "branding",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "resources/icon.ico",
+        "to": "icon.ico"
+      },
+      {
+        "from": "resources/logo.jpg",
+        "to": "logo.jpg"
+      }
+    ],
+    "win": {
+      "icon": "resources/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "executableName": "WeFlow-ShoeFactory",
+      "artifactName": "WeFlow-ShoeFactory-${version}-win-x64-setup.${ext}"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "wellotek",
+        "repo": "WeFlow-ShoeFactory-updates",
+        "releaseType": "release"
+      }
+    ],
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "include": "build/installer.nsh",
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "WeFlow ShoeFactory",
+      "uninstallDisplayName": "WeFlow ShoeFactory",
+      "installerIcon": "resources/icon.ico",
+      "uninstallerIcon": "resources/icon.ico",
+      "installerHeaderIcon": "resources/icon.ico",
+      "deleteAppDataOnUninstall": false
+    },
+    "npmRebuild": false,
+    "buildDependenciesFromSource": false
+  },
+  "dependencies": {
+    "@fontsource/cairo": "^5.2.5",
+    "@fontsource/montserrat": "^5.2.5",
+    "better-sqlite3": "11.10.0",
+    "dijkstrajs": "^1.0.3",
+    "electron-updater": "6.6.2",
+    "i18next": "^26.4.2",
+    "jszip": "^3.10.1",
+    "lucide-react": "^1.48.0",
+    "pngjs": "^5.0.0",
+    "qrcode": "^1.5.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-i18next": "^17.0.15",
+    "react-router-dom": "^6.30.6",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "@tailwindcss/vite": "4.3.3",
+    "@testing-library/react": "^16.0.0",
+    "@types/better-sqlite3": "^7.6.0",
+    "@types/node": "^20.11.0",
+    "@types/qrcode": "^1.5.5",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "5.1.4",
+    "electron": "35.7.5",
+    "electron-builder": "26.15.3",
+    "electron-vite": "5.0.0",
+    "eslint": "^9.0.0",
+    "happy-dom": "^15.0.0",
+    "tailwindcss": "4.3.3",
+    "typescript": "^5.6.0",
+    "typescript-eslint": "^8.0.0",
+    "vite": "^7.0.0",
+    "vitest": "4.1.11"
+  }
+}

@@ -1,0 +1,77 @@
+@import "tailwindcss";
+@import "@fontsource/montserrat/400.css";
+@import "@fontsource/montserrat/500.css";
+@import "@fontsource/montserrat/600.css";
+@import "@fontsource/montserrat/700.css";
+@import "@fontsource/montserrat/800.css";
+@import "@fontsource/cairo/400.css";
+@import "@fontsource/cairo/600.css";
+@import "@fontsource/cairo/700.css";
+@import "@fontsource/cairo/800.css";
+
+@theme {
+  --color-primary: #142B45;
+  --color-primary-hover: #0d1e30;
+  --color-secondary: #203F60;
+  --color-accent: #F28A27;
+  --color-accent-hover: #e07a16;
+  --color-canvas: #F4F6F8;
+  --color-surface: #FFFFFF;
+  --color-ink: #142B45;
+  --color-muted: #64748B;
+  --color-border: #E2E8F0;
+  --color-success: #16A34A;
+  --color-warning: #F59E0B;
+  --color-danger: #EF4444;
+  --font-sans: "Montserrat", "Cairo", "Segoe UI", system-ui, sans-serif;
+  --font-arabic: "Cairo", "Montserrat", "Segoe UI", system-ui, sans-serif;
+}
+
+:root {
+  color-scheme: light;
+  --wf-primary: #142B45;
+  --wf-secondary: #203F60;
+  --wf-accent: #F28A27;
+  --wf-canvas: #F4F6F8;
+  --wf-surface: #FFFFFF;
+  --wf-ink: #142B45;
+  --wf-border: #E2E8F0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--wf-canvas);
+  color: var(--wf-ink);
+  font-family: "Montserrat", "Segoe UI", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+html[dir="rtl"] body {
+  font-family: "Cairo", "Montserrat", "Segoe UI", system-ui, sans-serif;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Modal and dialogs */
+.modal-overlay {
+  background: rgba(20, 43, 69, 0.65);
+  backdrop-filter: blur(2px);
+}
